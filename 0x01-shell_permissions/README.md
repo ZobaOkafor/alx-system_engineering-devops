@@ -23,3 +23,13 @@ Task 10 script: Sets the mode of the files 'hello' and 'olleh' as the same.
 Task 11 script: Adds excute permission to all subdirectories in the current directory for the owner, the group and other users.
 
 Task 12 script: Creates a directory in the working directoty 'my_dir' with 751 permissions.
+
+Task 13 script: Changes the group owner for the file 'hello' to 'school.
+
+Task 14 script:	Changes the owner and group to 'vincent' and 'staff' respectively.
+
+Task 15 script: Changes the owner and group of the symbolic link to 'vincent' and 'staff' respectively.
+
+Task 16 script: This script changes the owner of the file 'hello' to 'betty' only if it is owned by the user 'guillaume'.
+
+Task 17 script: Plays the StarWars IV episode in the terminal.
