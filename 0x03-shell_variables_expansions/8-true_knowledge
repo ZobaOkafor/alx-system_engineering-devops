@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((128 + $VARTRUEKNOWLEDGE))
+echo $((128 + VARTRUEKNOWLEDGE))
