@@ -2,4 +2,6 @@
 # This script parses Apache logs and displays the visitor IP along with HTTP status code
 
 # Use awk to extract and format information
-awk '{print $1, $9}' apache-access.log
+awk '{print $1, $9}' apache-access.log:wq
+
+
