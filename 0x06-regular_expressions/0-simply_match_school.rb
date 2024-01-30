@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts ARGV.join(' ').scan(/\bSchool\b/).join('$').concat('$')
+puts ARGV[0].scan(/School/).join
