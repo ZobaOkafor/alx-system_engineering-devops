@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Displays listening ports and listening sockets
+#+ and also show the PID and program name each socket belongs to.
+
+sudo netstat -tulpn | awk 'NR==1 || /LISTEN/'
