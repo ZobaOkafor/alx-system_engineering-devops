@@ -1,7 +1,8 @@
 # Components of a Simple Web Infrastructure/Stack
 A simple Web infrastructure/Stack contains an operating system (OS), a programming language, database software, and a Web server.
 
-The following are components of a Simple Web Infrastructure/Stack:
+Let's look at the components of a Simple Web Infrastructure/Stack:
+
 What is a server?
 
 - A server is a physical or virtual machine responsible for hosting and serving a website. It is a computer system or software that provides functionality or services to other computers, known as clients, over a network.
