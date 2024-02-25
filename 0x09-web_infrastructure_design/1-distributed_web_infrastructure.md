@@ -28,7 +28,6 @@ Reasons for including the additional elements:
 •	Fault Tolerance: With duplicate copies of the application files distributed across multiple servers, the system becomes more resilient to failures. Even if one server becomes unavailable, the redundant copies ensure that the application remains accessible to users without interruption.
 
 5.	Database (Data Storage and Management):
-
 - Data Storage: The database is essential for storing and managing the website's data, including user information, content, and settings. It provides a centralized repository for accessing and manipulating data, facilitating efficient data retrieval and storage.
 
 - Data Management: The database manages data integrity, consistency, and security. It enforces data constraints, ensures ACID (Atomicity, Consistency, Isolation, Durability) properties, and implements access control mechanisms to protect sensitive information from unauthorized access or modification.
