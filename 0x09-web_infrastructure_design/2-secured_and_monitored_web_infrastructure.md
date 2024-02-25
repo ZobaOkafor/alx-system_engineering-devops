@@ -1,7 +1,7 @@
 # Secured and Monitored Web Infrastructure
 A Secured and Monitored Web Infrastucture is a three-server web infrastructure that is secured, monitored, and serves encrypted traffic. It is made up of the combination of technical and administrative measures put in place to ensure the security and reliability of a website or online service.
 
-# Let's look at some pecifics of the Infrastructure
+# Let's look at some specifics of the Infrastructure
 
 - Firewalls: Added for security to control and filter network traffic, preventing unauthorized access and mitigating potential threats.
 
@@ -33,7 +33,7 @@ How does monitoring tools collect data?
 - Monitoring tools collect data through monitoring clients or agents installed on servers, applications, and network devices. These clients continuously gather metrics, logs, and events from the monitored components and transmit them to a centralized monitoring platform for analysis and visualization.
 
 
-# Issues associated with Secureds and Monitored Web Infrastructure
+# Issues associated with Secured and Monitored Web Infrastructure
 - Terminating SSL at the load balancer level: Terminating SSL at the load balancer exposes decrypted traffic within the internal network, increasing the risk of data exposure if the load balancer is compromised. It's generally recommended to terminate SSL at the application servers to maintain end-to-end encryption.
 
 - Having a single MySQL server capable of accepting writes: Having only one MySQL server capable of accepting writes creates a single point of failure. If the server fails, write operations will be disrupted, impacting the availability and integrity of the database. Implementing MySQL replication or clustering can provide redundancy and fault tolerance.
