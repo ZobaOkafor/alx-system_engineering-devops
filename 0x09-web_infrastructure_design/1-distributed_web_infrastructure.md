@@ -34,8 +34,7 @@ The distribution algorithm the load balancer is configured with and how it works
 
 
 Is the load-balancer enabling an Active-Active or Active-Passive setup, explain the difference between both?
-
-Based on the round-robin algorithm, the load balancer enables an Active-Active setup as requests are sequentially distributed among the servers, hence no server is underutilized or overutilized. Below is the difference between an Active-Active setup and an Active-Passive setup.
+- Based on the round-robin algorithm, the load balancer enables an Active-Active setup as requests are sequentially distributed among the servers, hence no server is underutilized or overutilized. Below is the difference between an Active-Active setup and an Active-Passive setup.
 
 Active-Active Setup:
 - In an Active-Active setup, all backend servers are actively handling incoming requests simultaneously.
