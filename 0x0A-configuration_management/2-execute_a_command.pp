@@ -1,6 +1,5 @@
 # Manifest that kills a process called 'killmenow'.
 
 exec { 'killmenow':
-  command     => 'pkill killmenow',
-  refreshonly => true,
-}
+  command  => 'pkill killmenow',
+  provider => 'shell',
