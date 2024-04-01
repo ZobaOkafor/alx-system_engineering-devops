@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Update package index and install HAProxy
 
 apt-get install -y software-properties-common
