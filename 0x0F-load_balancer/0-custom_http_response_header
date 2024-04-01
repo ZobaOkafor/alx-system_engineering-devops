@@ -3,28 +3,8 @@
 
 sudo apt update
 sudo apt install -y nginx
-
-# Define the custom header value
-HOSTNAME=$(hostname)
-
-# Configure Nginx to add custom header
-sudo bash -c 'cat <<EOF > /etc/nginx/conf.d/custom_response_header.conf
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    server_name _;
-
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header X-Served-By $HOSTNAME;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-EOF'
-
-# Restart Nginx to apply changes
-sudo systemctl restart nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Tolulope05 permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/nginx.conf
+service nginx start
