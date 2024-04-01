@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 # Update package index and install HAProxy
 
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get -y update
-apt-get -y install haproxy=2.0.\*
-echo -e "\nfrontend http\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n\nbackend web-backend\n\tbalance roundrobin\n\tserver 517706-web-01 54.152.235.22:80 check\n\tserver 517706-web-02 35.175.64.89:80 check" >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+apt-get install -y haproxy=1.8.\*
+
+echo "ENABLED=1" > /etc/default/haproxy
+
+echo "
+listen load_balancer
+    bind :80
+    bind :8080
+    mode http
+    balance roundrobin
+    option httpchk HEAD / HTTP/1.1\r\nHost:\ localhost
+    option forwardfor
+    server 517706-web-01 54.152.235.22 check port 80
+    server 517706-web-02 35.175.64.89 check port 80
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy start
