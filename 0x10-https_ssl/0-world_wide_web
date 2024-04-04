@@ -4,7 +4,7 @@
 
 domain_info () {
     local result
-    result=$(dig "$2.$1" | awk "/^'"${2}"'\.'"${1}"'\./ { print $1,$4,$5 }")
+    result=$(dig "$2.$1" | awk '/^'"${2}"'\.'"${1}"'\./ { print $1,$4,$5 }')
     echo "The subdomain $2 is $result"
 }
 
