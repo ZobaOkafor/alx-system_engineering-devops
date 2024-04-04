@@ -18,12 +18,12 @@ display_info() {
 }
 
 # Main script
-if [[ $# -eq 0 ]]; then
-    echo "Usage: $0 <domain> [<subdomain>]"
-    exit 1
-fi
+# if [[ $# -eq 0 ]]; then
+# echo "Usage: $0 <domain> [<subdomain>]"
+# exit 1
+# fi
 
-domain="$1"
-subdomain="$2"
+# domain="$1"
+# subdomain="$2"
 
-display_info "$domain" "$subdomain"
+# display_info "$domain" "$subdomain"
