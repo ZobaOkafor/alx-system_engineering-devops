@@ -18,32 +18,21 @@ def get_employee_todo_progress(employee_id):
     Returns:
         None
     """
-    base_url = 'https://jsonplaceholder.typicode.com/'
-    employee_url = f'{base_url}users/{employee_id}'
-    todo_url = f'{base_url}todos?userId={employee_id}'
+    base_url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(base_url + "users/{}".format(employee_id)).json()
+    todos = requests.get(
+            base_url + "todos",
+            params={"userId": employee_id}).json()
 
-    try:
-        employee_response = requests.get(employee_url)
-        employee_response.raise_for_status()
-        todo_response = requests.get(todo_url)
-        todo_response.raise_for_status()
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-        return
-
-    employee_data = employee_response.json()
-    todo_data = todo_response.json()
-
-    employee_name = employee_data.get('name', 'Unknown Employee')
-    total_tasks = len(todo_data)
-    completed_tasks = sum(1 for task in todo_data if task.get('completed'))
+    completed_tasks = [
+            task.get("title") for task in todos if task.get("completed")]
+    total_tasks = len(todos)
 
     print(
-            f"Employee {employee_name}
-            is done with tasks({completed_tasks}/{total_tasks}): ")
-    for task in todo_data:
-        if task.get('completed'):
-            print(f"\t{task.get('title')}")
+        "Employee {} is done with tasks({}/{}): "
+        .format(user.get("name"), len(completed_tasks), total_tasks))
+    for task in completed_tasks:
+        print("\t{}".format(task))
 
 
 if __name__ == "__main__":
