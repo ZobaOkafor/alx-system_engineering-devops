@@ -11,7 +11,8 @@ from urllib import request, error
 
 def get_employee_todo_progress(employee_id):
     """
-    Retrieves and displays information about an employee's TODO list progress.
+    This retrieves and displays information about an employee's
+    TODO list progress.
 
     Args:
         employee_id (int): The ID of the employee.
