@@ -35,6 +35,8 @@ def export_to_csv(employee_id):
 
     print(f"TODO list for user {user.get('username')} exported to {filename}")
 
+    return len(todos)  # Return the number of tasks exported
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
@@ -42,4 +44,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-    export_to_csv(employee_id)
+    num_tasks = export_to_csv(employee_id)
+    print(
+        f"Number of tasks in CSV: {'OK' if num_tasks == 20 else 'Incorrect'}")
