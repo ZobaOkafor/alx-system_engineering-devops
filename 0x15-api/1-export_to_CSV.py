@@ -20,22 +20,18 @@ def export_to_csv(employee_id):
     """
     base_url = "https://jsonplaceholder.typicode.com/"
     user = requests.get(base_url + "users/{}".format(employee_id)).json()
+    username = user.get("username")
     todos = requests.get(
             base_url + "todos", params={"userId": employee_id}).json()
 
-    filename = f"{employee_id}.csv"
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(
-                ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+    with open("{}.csv".format(employee_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for todo in todos:
             writer.writerow(
-                    [user.get("id"), user.get("username"),
-                        todo.get("completed"), todo.get("title")])
+                    [employee_id, username, todo.get("completed"),
+                        todo.get("title")])
 
-    print(f"TODO list for user {user.get('username')} exported to {filename}")
-
-    return len(todos)  # Return the number of tasks exported
+    return len(todos)
 
 
 if __name__ == "__main__":
@@ -43,7 +39,7 @@ if __name__ == "__main__":
         print("Usage: python3 export_to_CSV.py <employee_id>")
         sys.exit(1)
 
-    employee_id = int(sys.argv[1])
+    employee_id = sys.argv[1]
     num_tasks = export_to_csv(employee_id)
     print(
         f"Number of tasks in CSV: {'OK' if num_tasks == 20 else 'Incorrect'}")
