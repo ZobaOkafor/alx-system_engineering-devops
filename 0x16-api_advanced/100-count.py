@@ -3,9 +3,9 @@
 This module contains a recursive function to query the Reddit API, parse
 the title of all hot articles, and print a sorted count of given keywords.
 """
-from collections import defaultdict
-import requests
 # from collections import defaultdict
+import requests
+from collections import defaultdict
 
 
 def count_words(subreddit, word_list, word_count=None, after=None):
