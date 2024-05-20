@@ -8,7 +8,8 @@ import requests
 
 def number_of_subscribers(subreddit):
     """
-    Queries the Reddit API and returns the number of subscribers for a given subreddit.
+    Queries the Reddit API and returns the number of subscribers
+    for a given subreddit.
     If the subreddit is invalid, returns 0.
 
     Args:
@@ -18,7 +19,9 @@ def number_of_subscribers(subreddit):
         int: The number of subscribers, or 0 if the subreddit is invalid.
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'python:subreddit.subscriber.counter:v1.0 (by /u/yourusername)'}
+    headers = {
+            'User-Agent':
+            'python:subreddit.subscriber.counter:v1.0 (by /u/yourusername)'}
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code == 200:
