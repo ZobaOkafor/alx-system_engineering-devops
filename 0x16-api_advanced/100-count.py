@@ -20,7 +20,7 @@ def count_words(subreddit, word_list, word_count=None, after=None):
         None
     """
     if word_count is None:
-        word_count = collections.defaultdict(int)
+        word_count = defaultdict(int)
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {
