@@ -42,4 +42,3 @@ server {
         root /var/www/html;
         internal;
     }
-}
