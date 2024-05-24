@@ -1,0 +1,56 @@
+# Configures Nginx to serve the complete AirBnB_clone_v4 application.
+
+server {
+    listen 	80 default_server;
+    listen      [::]:80 default_server ipv6only=on;
+
+    # Use IP of server as domain name
+    server_name 54.161.254.253;
+
+    # Customize HTTP response header
+    add_header  X-Served-By 517706-web-01;
+
+    # Serve /airbnb-onepage/ route from AirBnB_clone_v2
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000; # Do not repeat the route
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+    # Proxy /airbnb-dynamic/number_odd_or_even/ to the second Gunicorn instance
+    location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Proxy /api/ to Gunicorn instance on port 5002
+    location /api/ {
+        proxy_pass http://127.0.0.1:5002;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /static/ {
+        alias web_dynamic/static/;
+    }
+
+    error_page 404 /404.html;
+    location /404 {
+        root /var/www/html;
+        internal;
+    }
