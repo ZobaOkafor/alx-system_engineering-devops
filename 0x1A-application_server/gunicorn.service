@@ -1,3 +1,5 @@
+Description "Gunicorn application server running AirBnB_clone_v4"
+
 [Unit]
 Description=Gunicorn instance to serve AirBnB clone v4
 # Start after the network is available
